@@ -16,6 +16,10 @@
 
 * { box-sizing: border-box; }
 
+/* Egna display-regler slar annars ut hidden-attributet: varningen och
+   "Annan enhet?" syntes for alla, aven nar skriptet hallit dem dolda. */
+[hidden] { display: none !important; }
+
 html { scroll-behavior: smooth; }
 
 #funktioner, #skarmdumpar, #installera, #fragor {
@@ -587,15 +591,49 @@ section { padding: 0 1.5rem; }
 
 .faq-body a { color: var(--accent-hover); text-decoration: underline; text-underline-offset: 2px; }
 
-.faq-quote {
-  margin: 1.1rem 0 0;
-  padding: 0 0 0 1rem;
-  border-left: 2px solid var(--accent);
+/* ---------- Omdöme ---------- */
+
+/* Ett riktigt citat, med luft omkring. Det låg först inbakat i ett FAQ-svar
+   och läste då som reklam — "en av våra användare tyckte…". Ett omdöme ska
+   stå för sig självt, med namn, och med den kontext som gör det begripligt. */
+
+.omdome { padding: 0 1.5rem 9rem; }
+
+.omdome-inner { max-width: 640px; margin: 0 auto; text-align: center; }
+
+.omdome blockquote { margin: 0; }
+
+.omdome blockquote p {
+  font-size: clamp(1.5rem, 4.4vw, 2.1rem);
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+  margin: 0;
+  text-wrap: balance;
 }
 
-.faq-quote p { color: var(--text); font-size: 1rem; margin: 0 0 0.35rem; }
+.omdome figcaption {
+  margin-top: 1.6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
 
-.faq-quote cite { font-style: normal; font-size: 0.85rem; color: var(--text-faint); }
+.omdome-namn { font-size: 0.95rem; font-weight: 600; }
+
+.omdome-roll {
+  font-size: 0.8rem;
+  color: var(--text-faint);
+  letter-spacing: 0.04em;
+}
+
+.omdome-bakgrund {
+  margin: 2rem auto 0;
+  max-width: 440px;
+  font-size: 0.92rem;
+  line-height: 1.65;
+  color: var(--text-muted);
+}
 
 /* ---------- Friskvård ---------- */
 
@@ -694,4 +732,309 @@ section { padding: 0 1.5rem; }
 
 @media (max-width: 480px) {
   .phone-lg { width: 240px; }
+}
+
+/* ---------- Installationsguiden (installera.html) ---------- */
+
+/* Egen sida i stället för ett stycke på startsidan. Den som trycker
+   "Testa MinCoach" ska få veta att appen installeras från webbläsaren —
+   annars tror man att en flik i Safari är hela produkten. */
+
+.guide-topp {
+  max-width: 640px;
+  margin: 0 auto;
+  padding-top: 4.5rem;
+  text-align: center;
+}
+
+.guide-topp h1 {
+  font-size: clamp(2rem, 6.5vw, 2.7rem);
+  letter-spacing: -0.03em;
+  line-height: 1.12;
+  margin: 0 0 1.1rem;
+}
+
+.guide-ingress {
+  color: var(--text-muted);
+  font-size: 1.05rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* --- Varför --- */
+
+.guide-varfor { margin: 4.5rem auto 0; max-width: 640px; }
+
+.varfor-inner {
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-lg);
+  padding: 2.25rem;
+}
+
+.varfor-inner h2 {
+  font-size: 1.15rem;
+  margin: 0 0 1.5rem;
+  letter-spacing: -0.01em;
+}
+
+.varfor-lista { list-style: none; margin: 0; padding: 0; display: grid; gap: 1.35rem; }
+
+.varfor-lista li {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--text-muted);
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.varfor-lista strong { color: var(--text); font-weight: 600; display: block; }
+
+/* Bock i stället för punkt: det här är vad man vinner, inte en uppräkning. */
+.varfor-lista li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.45rem;
+  width: 0.5rem;
+  height: 0.28rem;
+  border-left: 2px solid var(--accent-hover);
+  border-bottom: 2px solid var(--accent-hover);
+  transform: rotate(-45deg);
+}
+
+.varfor-not {
+  margin: 1.75rem 0 0;
+  padding-top: 1.35rem;
+  border-top: 1px solid var(--card-border);
+  font-size: 0.87rem;
+  color: var(--text-faint);
+  line-height: 1.6;
+}
+
+/* --- Stegen --- */
+
+.guide-steg { max-width: 640px; margin: 4.5rem auto 0; }
+
+.guide-enhet {
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--text-faint);
+  margin: 0 0 1.25rem;
+}
+
+.guide-kort-lista { display: grid; gap: 1rem; }
+
+.guide-kort {
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+}
+
+/* Med JS visas bara kortet för telefonen man står med. Resten ligger kvar
+   bakom "Annan enhet?" — tre parallella listor gör det svårare, inte lättare. */
+.har-js .guide-kort:not(.ar-din) { display: none; }
+
+.guide-kort.ar-din { border-color: rgba(96, 165, 250, 0.3); }
+
+.kort-topp { margin-bottom: 1.75rem; }
+
+.kort-plattform {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: rgba(96, 165, 250, 0.65);
+}
+
+.kort-topp h2 { font-size: 1.35rem; margin: 0.35rem 0 0; letter-spacing: -0.02em; }
+
+.kort-varning {
+  background: rgba(247, 144, 9, 0.09);
+  border: 1px solid rgba(247, 144, 9, 0.28);
+  border-radius: var(--radius-md);
+  padding: 1.1rem 1.25rem;
+  margin-bottom: 1.75rem;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+
+.kort-varning strong { display: block; color: #fbbf5c; margin-bottom: 0.3rem; }
+.kort-varning span strong { display: inline; color: var(--text); }
+
+.guide-stegen { list-style: none; margin: 0; padding: 0; display: grid; gap: 1.6rem; }
+
+.guide-stegen li { display: flex; gap: 1rem; align-items: flex-start; }
+
+.steg-nr {
+  flex: 0 0 auto;
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 999px;
+  background: rgba(47, 109, 246, 0.16);
+  border: 1px solid rgba(96, 165, 250, 0.3);
+  color: #9cc0ff;
+  font-size: 0.8rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.steg-text { flex: 1 1 auto; min-width: 0; padding-top: 0.15rem; }
+
+.steg-text p { margin: 0; font-size: 0.95rem; line-height: 1.6; color: var(--text-muted); }
+.steg-text strong { color: var(--text); font-weight: 600; }
+
+/* --- Ritade knappar --- */
+
+/* Ikonerna är ritade, inte skärmdumpade: en skärmdump är en annan telefon,
+   på ett annat språk, och åldras med varje iOS-version. */
+
+.knappbild { display: flex; align-items: center; gap: 0.7rem; margin-top: 0.9rem; }
+
+.ios-knapp,
+.android-knapp {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 0.7rem;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  color: #6aa2ff;
+}
+
+.android-knapp { color: rgba(255, 255, 255, 0.82); }
+
+.ios-knapp svg,
+.android-knapp svg { width: 1.3rem; height: 1.3rem; }
+
+.knappbild-text { font-size: 0.82rem; color: var(--text-faint); }
+
+/* --- Delningsark / meny --- */
+
+.ark {
+  margin-top: 0.9rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.04);
+  overflow: hidden;
+}
+
+.ark-rad {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.8rem 1rem;
+  font-size: 0.88rem;
+  color: var(--text-faint);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.ark-rad:last-child { border-bottom: none; }
+
+.ark-meny .ark-rad { justify-content: flex-start; }
+
+.ark-rad-vald {
+  background: rgba(47, 109, 246, 0.14);
+  color: var(--text);
+  font-weight: 600;
+  box-shadow: inset 2px 0 0 var(--accent);
+}
+
+.ark-ikon { display: inline-flex; color: currentColor; opacity: 0.85; }
+.ark-ikon svg { width: 1.1rem; height: 1.1rem; }
+
+.guide-visa-alla {
+  display: block;
+  margin: 1.5rem auto 0;
+  background: none;
+  border: none;
+  color: var(--text-faint);
+  font-family: inherit;
+  font-size: 0.85rem;
+  cursor: pointer;
+  padding: 0.5rem 0.75rem;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.guide-visa-alla:hover { color: var(--text); }
+
+/* --- Dator --- */
+
+.dator-text p { margin: 0 0 0.9rem; font-size: 0.95rem; line-height: 1.6; color: var(--text-muted); }
+
+.dator-adress {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text);
+  letter-spacing: -0.01em;
+}
+
+.dator-not { font-size: 0.85rem; color: var(--text-faint); margin-bottom: 0; }
+.dator-not a { color: var(--accent-hover); text-decoration: underline; text-underline-offset: 2px; }
+
+/* --- Resultatet --- */
+
+.guide-resultat { max-width: 640px; margin: 4.5rem auto 0; }
+
+.resultat-inner {
+  display: flex;
+  align-items: center;
+  gap: 1.75rem;
+  background: linear-gradient(180deg, rgba(47, 109, 246, 0.09), rgba(47, 109, 246, 0.02));
+  border: 1px solid rgba(96, 165, 250, 0.14);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+}
+
+.hemskarm { flex: 0 0 auto; text-align: center; }
+
+.hemskarm-ikon {
+  width: 4.5rem;
+  height: 4.5rem;
+  border-radius: 1.15rem;
+  overflow: hidden;
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.45);
+}
+
+.hemskarm-ikon img { width: 100%; height: 100%; display: block; object-fit: cover; }
+
+.hemskarm-namn { display: block; margin-top: 0.5rem; font-size: 0.75rem; color: var(--text-muted); }
+
+.resultat-text h2 { font-size: 1.15rem; margin: 0 0 0.6rem; letter-spacing: -0.01em; }
+.resultat-text p { margin: 0; font-size: 0.93rem; line-height: 1.6; color: var(--text-muted); }
+
+/* --- Krångel --- */
+
+.guide-krangel { max-width: 640px; margin: 4.5rem auto 0; }
+.guide-krangel h2 { font-size: 1.5rem; margin: 0 0 1.5rem; letter-spacing: -0.02em; text-align: center; }
+
+.cta-not { margin: 1rem 0 0; font-size: 0.85rem; color: var(--text-faint); }
+
+/* --- Startsidans hänvisning hit --- */
+
+.install-hanvisning { max-width: 640px; margin: 0 auto 9rem; text-align: center; }
+
+.install-hanvisning h2 { font-size: 2rem; letter-spacing: -0.02em; margin: 0 0 1rem; }
+
+.install-hanvisning p {
+  color: var(--text-muted);
+  font-size: 1rem;
+  line-height: 1.65;
+  margin: 0 auto 1.75rem;
+  max-width: 480px;
+}
+
+@media (max-width: 640px) {
+  .guide-topp { padding-top: 3rem; }
+  .varfor-inner,
+  .guide-kort { padding: 1.6rem; }
+  .resultat-inner { flex-direction: column; text-align: center; gap: 1.35rem; padding: 2rem 1.6rem; }
 }
