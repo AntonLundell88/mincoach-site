@@ -18,7 +18,7 @@
 
 html { scroll-behavior: smooth; }
 
-#funktioner, #skarmdumpar, #installera {
+#funktioner, #skarmdumpar, #installera, #fragor {
   scroll-margin-top: 90px;
 }
 
@@ -524,6 +524,78 @@ section { padding: 0 1.5rem; }
 .steps strong { color: var(--text); }
 
 /* ---------- Founder ---------- */
+
+/* ---------- FAQ ---------- */
+
+.faq { max-width: 720px; margin: 0 auto; padding: 7rem 1.5rem 0; }
+
+.faq h2 { text-align: center; font-size: 2rem; letter-spacing: -0.02em; margin: 0 0 2.5rem; }
+
+.faq-list { display: grid; gap: 0.6rem; }
+
+.faq-item {
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.faq-item summary {
+  cursor: pointer;
+  list-style: none;
+  padding: 1.15rem 3rem 1.15rem 1.35rem;
+  font-size: 1rem;
+  font-weight: 600;
+  position: relative;
+  transition: color 0.15s ease;
+}
+
+.faq-item summary::-webkit-details-marker { display: none; }
+
+/* Egen pil: webbläsarnas standardtriangel ser ut som ett formulär, inte
+   som en lugn sida. Roterar när frågan öppnas. */
+.faq-item summary::after {
+  content: "";
+  position: absolute;
+  right: 1.45rem;
+  top: 50%;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-right: 2px solid var(--text-faint);
+  border-bottom: 2px solid var(--text-faint);
+  transform: translateY(-65%) rotate(45deg);
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.faq-item[open] summary::after {
+  transform: translateY(-25%) rotate(225deg);
+  border-color: var(--accent-hover);
+}
+
+.faq-item summary:hover { color: var(--accent-hover); }
+
+.faq-body { padding: 0 1.35rem 1.35rem; }
+
+.faq-body p {
+  margin: 0 0 0.8rem;
+  color: var(--text-muted);
+  line-height: 1.65;
+  font-size: 0.97rem;
+}
+
+.faq-body p:last-child { margin-bottom: 0; }
+
+.faq-body a { color: var(--accent-hover); text-decoration: underline; text-underline-offset: 2px; }
+
+.faq-quote {
+  margin: 1.1rem 0 0;
+  padding: 0 0 0 1rem;
+  border-left: 2px solid var(--accent);
+}
+
+.faq-quote p { color: var(--text); font-size: 1rem; margin: 0 0 0.35rem; }
+
+.faq-quote cite { font-style: normal; font-size: 0.85rem; color: var(--text-faint); }
 
 /* ---------- Friskvård ---------- */
 
