@@ -234,10 +234,13 @@ section { padding: 0 1.5rem; }
   height: 460px;
 }
 
+/* contain, inte cover. Med cover beskars skärmdumparna i sidled — "God kväll
+   Emelie" blev "Emelie" och "Senaste 28 dagarna" blev "aste 28 dagarna".
+   Poängen med bilden är att visa appen, inte att fylla ramen. */
 .screen-real img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   object-position: top center;
   display: block;
 }
@@ -519,6 +522,25 @@ section { padding: 0 1.5rem; }
 }
 
 .steps strong { color: var(--text); }
+
+/* ---------- Founder ---------- */
+
+/* ---------- Friskvård ---------- */
+
+.friskvard { padding: 7rem 1.5rem 0; }
+
+.friskvard-inner { max-width: 560px; margin: 0 auto; text-align: center; }
+
+.friskvard h2 { margin-bottom: 0.6rem; }
+
+.friskvard p {
+  font-size: 1rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin: 0 0 0.75rem;
+}
+
+.friskvard-note { font-size: 0.88rem; color: var(--text-faint); }
 
 /* ---------- Founder ---------- */
 
