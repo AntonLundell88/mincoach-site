@@ -1038,3 +1038,82 @@ section { padding: 0 1.5rem; }
   .guide-kort { padding: 1.6rem; }
   .resultat-inner { flex-direction: column; text-align: center; gap: 1.35rem; padding: 2rem 1.6rem; }
 }
+
+/* --- Steg noll: öppna appen först ---
+   Finns för att det gick att installera marknadssajten i stället för
+   appen. Därför tyngre än ett vanligt steg: egen ruta, tonad kant och
+   adressen att jämföra mot, med fel adress överstruken bredvid rätt. */
+
+.guide-forst { max-width: 640px; margin: 4.5rem auto 0; }
+
+.forst-inner {
+  background: var(--card);
+  border: 1px solid var(--accent, #4f83ff);
+  border-radius: var(--radius-lg);
+  padding: 2.25rem;
+  text-align: center;
+}
+
+.forst-nr {
+  margin: 0 0 0.6rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent-hover, #7aa2ff);
+}
+
+.forst-inner h2 {
+  font-size: 1.35rem;
+  margin: 0 0 0.9rem;
+  letter-spacing: -0.01em;
+}
+
+.forst-text {
+  margin: 0 auto 1.6rem;
+  max-width: 42ch;
+  line-height: 1.65;
+  color: var(--text-faint);
+}
+
+.forst-knapp { display: inline-flex; }
+
+.forst-kontroll {
+  margin: 1.6rem 0 0;
+  padding-top: 1.35rem;
+  border-top: 1px solid var(--card-border);
+  font-size: 0.87rem;
+  line-height: 1.9;
+  color: var(--text-faint);
+}
+
+.forst-ratt,
+.forst-fel {
+  display: inline-block;
+  margin: 0 0.15rem;
+  padding: 0.12rem 0.5rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.forst-ratt {
+  color: var(--text);
+  background: rgba(79, 131, 255, 0.14);
+  border: 1px solid rgba(79, 131, 255, 0.3);
+}
+
+.forst-fel {
+  color: var(--text-faint);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--card-border);
+  text-decoration: line-through;
+  opacity: 0.75;
+}
+
+.forst-fel::before { content: "inte "; text-decoration: none; }
+
+@media (max-width: 480px) {
+  .forst-inner { padding: 1.75rem 1.25rem; }
+  .forst-inner h2 { font-size: 1.2rem; }
+}

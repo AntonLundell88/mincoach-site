@@ -59,6 +59,33 @@
       </div>
     </section>
 
+    <!-- Steg noll. Står här för att Anton, som byggt sajten, installerade
+         fel sak på sin brors Samsung: han följde stegen medan han stod på
+         mincoach.app och fick marknadssajten på hemskärmen i stället för
+         appen. Det gick att göra fel för att "öppna appen" var en mening i
+         steg 1 med samma tyngd som "tryck på menyn", och enda knappen dit
+         låg liten uppe i hörnet. Nu är det ett eget steg före de andra,
+         med adressen att kontrollera mot. -->
+    <section class="guide-forst">
+      <div class="forst-inner">
+        <p class="forst-nr">Först</p>
+        <h2>Öppna appen innan du installerar</h2>
+        <p class="forst-text">
+          Den här sidan är vår hemsida. Appen ligger på en egen adress, och
+          det är <strong>den</strong> du ska lägga på hemskärmen. Installerar
+          du härifrån hamnar hemsidan på hemskärmen i stället.
+        </p>
+        <a href="https://app.mincoach.app" class="btn btn-primary forst-knapp">
+          Öppna appen
+        </a>
+        <p class="forst-kontroll">
+          Kolla adressfältet innan du går vidare. Det ska stå
+          <span class="forst-ratt">app.mincoach.app</span>
+          <span class="forst-fel">mincoach.app</span>
+        </p>
+      </div>
+    </section>
+
     <section class="guide-steg">
       <p class="guide-enhet" id="enhetsrad" hidden></p>
 
@@ -83,7 +110,7 @@
             <li>
               <span class="steg-nr">1</span>
               <div class="steg-text">
-                <p>Öppna MinCoach i Safari. Knappen <strong>Öppna MinCoach</strong> uppe till höger gör det.</p>
+                <p>Öppna appen i Safari, enligt rutan ovanför. I adressfältet ska det stå <strong>app.mincoach.app</strong>.</p>
               </div>
             </li>
             <li>
@@ -158,7 +185,7 @@
             <li>
               <span class="steg-nr">1</span>
               <div class="steg-text">
-                <p>Öppna MinCoach i Chrome. Knappen <strong>Öppna MinCoach</strong> uppe till höger gör det.</p>
+                <p>Öppna appen i Chrome, enligt rutan ovanför. I adressfältet ska det stå <strong>app.mincoach.app</strong>.</p>
               </div>
             </li>
             <li>
@@ -180,9 +207,17 @@
             <li>
               <span class="steg-nr">3</span>
               <div class="steg-text">
+                <!-- Raden namnger med flit flera varianter i stället för en
+                     exakt sträng. Chrome har bytt ordval flera gånger och
+                     Samsung visar sitt eget; Anton hittade inte "Installera
+                     app" på sin brors telefon. Det som är gemensamt är
+                     ordet installera eller hemskärm. -->
                 <p>
-                  Välj <strong>Installera app</strong>. På vissa telefoner står
-                  det <strong>Lägg till på hemskärmen</strong> i stället — samma sak.
+                  Leta efter raden med ordet <strong>installera</strong> eller
+                  <strong>hemskärm</strong>. Beroende på telefon och version
+                  står det <strong>Installera app</strong>,
+                  <strong>Installera appikon</strong> eller
+                  <strong>Lägg till på hemskärmen</strong> — samma sak.
                 </p>
                 <div class="ark ark-meny" aria-hidden="true">
                   <div class="ark-rad">
@@ -286,10 +321,19 @@
           </div>
         </details>
         <details class="faq-item">
-          <summary>Det står inte "Installera app" i Chrome-menyn</summary>
+          <summary>Jag hittar inte "Installera app" i menyn</summary>
           <div class="faq-body">
-            <p>Leta efter <strong>Lägg till på hemskärmen</strong> i stället — det är samma sak.</p>
+            <p>
+              Ordvalet skiljer sig mellan telefoner och versioner. Leta efter
+              <strong>Installera appikon</strong> eller
+              <strong>Lägg till på hemskärmen</strong> — det är samma sak.
+            </p>
             <p>Använder du Samsung Internet: menyn nere till höger, sedan <strong>Lägg till sida på</strong> och <strong>Hemskärm</strong>.</p>
+            <p>
+              Hittar du ingen av dem alls står du förmodligen på fel adress.
+              Raden ska bara dyka upp på <strong>app.mincoach.app</strong>,
+              inte på den här sidan.
+            </p>
           </div>
         </details>
         <details class="faq-item">
